@@ -2,7 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const axios = require('axios')
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const { devnet,  createSolanaRpc, address,  signature, createSolanaRpcSubscriptions, getAddressFromPublicKey, lamports, generateKeyPair, } = require('@solana/web3.js');
 app.use(cors());
 app.use(express.json())
@@ -14,8 +14,14 @@ const { solanaTokenTracker } = require('./utility/solanaTokenTracker');
 const tokenTracker = new solanaTokenTracker();
 
 
+app.use(express.static(path.join(__dirname, 'client', 'dist')));
 
-const SOL = 1_000_000_000n;
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
+});
+
+
+
 
 
 app.get("/api/pushairdrop", async (req, res) => {
