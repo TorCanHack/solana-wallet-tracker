@@ -14,16 +14,6 @@ const { solanaTokenTracker } = require('./utility/solanaTokenTracker');
 const tokenTracker = new solanaTokenTracker();
 
 
-app.use(express.static(path.join(__dirname, 'client', 'dist')));
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
-});
-
-
-
-
-
 app.get("/api/pushairdrop", async (req, res) => {
     const user = await generateKeyPair();
     const address = await getAddressFromPublicKey(user.publicKey);
