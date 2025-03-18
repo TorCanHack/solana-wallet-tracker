@@ -14,31 +14,7 @@ const { solanaTokenTracker } = require('./utility/solanaTokenTracker');
 const tokenTracker = new solanaTokenTracker();
 
 
-app.get("/api/pushairdrop", async (req, res) => {
-    const user = await generateKeyPair();
-    const address = await getAddressFromPublicKey(user.publicKey);
-    console.log('address', address)
-    const amount = lamports(1n * SOL)
 
-    
-
-    try {
-
-        const getBalanceResponse = await rpc
-        .getBalance("BkE9J4SEuxdEci8xdLiZ3gSsSg16Wq16d5sU48Do3fQ5", { commitment: "finalized" })
-        .send();
-
-        console.log("Updated balance for address", "BkE9J4SEuxdEci8xdLiZ3gSsSg16Wq16d5sU48Do3fQ5", getBalanceResponse.value);
-        res.json({
-            wallet: "BkE9J4SEuxdEci8xdLiZ3gSsSg16Wq16d5sU48Do3fQ5",
-            balance: getBalanceResponse.value.toString()
-        })
-    } catch(error){
-        console.error(error)
-    }
-    
-
-})
 
 app.get("/api/transactions/:address", async (req, res) => {
     try {
