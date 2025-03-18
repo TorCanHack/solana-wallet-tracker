@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-    baseURL: 'https://solana-wallet-tracker-backend.onrender.com',
+    baseURL: 'https://solana-wallet-tracker-backend.onrender.com/api',
     headers: {
         'Content-Type': 'application/json'
     }
