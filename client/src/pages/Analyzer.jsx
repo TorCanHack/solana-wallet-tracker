@@ -182,7 +182,7 @@ const Analyzer = ({ address }) => {
     
 
     return (
-        <section className="bg-gradient-to-r from-purple-900 to-green-900 h-screen text-white p-6 flex flex-col  items-center ">
+        <section className="bg-gradient-to-r from-purple-900 to-green-900  h-min-screen h-max-full text-white p-6 flex flex-col  items-center ">
             {isLoading ? <MoonLoader color="#36d7b7" size={50} /> 
             : <div>
                     <h1 className="font-bold text-xl mb-3 text-center ">Assets</h1>
